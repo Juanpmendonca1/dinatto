@@ -140,7 +140,7 @@ function voltarPergunta(atual) {
 }
 
 function avaliarResultado() {
-  showStep('obrigado');
+  window.location.href = 'obrigado.html';
 }
 
 /* ── carrossel drag + teclado ── */
