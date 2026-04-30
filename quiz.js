@@ -1,6 +1,16 @@
 const TOTAL = 7;
+const SHEET_URL = 'https://script.google.com/macros/s/AKfycbyrrMaEKgszpI2qssVXfg8wk1ZcB03O7trsFuJvvSFOROpxNGxYPB55R9w9KCqRTJXfHA/exec';
 
 const state = { nome: '', whatsapp: '', clinica: '', respostas: {} };
+
+function enviarParaPlanilha(payload) {
+  fetch(SHEET_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  }).catch(() => {});
+}
 
 /* ── helpers ── */
 function showStep(id) {
@@ -67,6 +77,14 @@ function avancarIdentificacao() {
   if (!valid) return;
 
   state.nome = nome; state.whatsapp = wpp; state.clinica = clin;
+
+  enviarParaPlanilha({
+    tipo: 'lead',
+    nome: state.nome,
+    whatsapp: state.whatsapp,
+    clinica: state.clinica
+  });
+
   showStep(1);
   setProgress(1);
 }
@@ -105,6 +123,18 @@ function voltarPergunta(atual) {
 }
 
 function avaliarResultado() {
+  enviarParaPlanilha({
+    tipo: 'respostas',
+    whatsapp: state.whatsapp,
+    p1: state.respostas[1] || '',
+    p2: state.respostas[2] || '',
+    p3: state.respostas[3] || '',
+    p4: state.respostas[4] || '',
+    p5: state.respostas[5] || '',
+    p6: state.respostas[6] || '',
+    p7: state.respostas[7] || '',
+    status: 'Completo'
+  });
   showStep('obrigado');
 }
 
