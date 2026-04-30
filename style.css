@@ -294,6 +294,8 @@ nav.scrolled {
   position: relative;
   z-index: var(--z-content);
   max-width: 700px;
+  width: 100%;
+  overflow: hidden;
 }
 
 /* Hero badge */
@@ -1675,22 +1677,46 @@ footer {
   #hero {
     padding-top: 0;
     min-height: auto;
-    padding-block: 48px;
+    padding-block: 32px 48px;
+    overflow: hidden;
+    max-width: 100vw;
   }
 
   #hero h1 {
     font-size: 25px;
     line-height: 1.15;
     letter-spacing: -0.5px;
-    word-break: break-word;
-    overflow-wrap: break-word;
     max-width: 100%;
+  }
+
+  #hero h1 br { display: none; }
+  .hero-highlight-block { display: block; }
+
+  #hero .hero-sub {
+    max-width: 100%;
+  }
+
+  #hero .btn-hero {
+    white-space: normal;
+    text-align: center;
+    width: 100%;
+    justify-content: center;
+  }
+
+  #hero .hero-badge {
+    max-width: calc(100vw - 40px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .hero-badge {
     border-radius: 4px;
     font-size: 10px;
-    white-space: nowrap;
+    white-space: normal;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 
