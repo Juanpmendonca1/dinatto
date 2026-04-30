@@ -76,6 +76,13 @@ function avancarIdentificacao() {
 
   state.nome = nome; state.whatsapp = wpp; state.clinica = clin;
 
+  enviarParaPlanilha({
+    tipo: 'lead',
+    data: new Date().toLocaleString('pt-BR'),
+    nome: state.nome,
+    whatsapp: state.whatsapp,
+    clinica: state.clinica
+  });
 
   showStep(1);
   setProgress(1);
@@ -99,6 +106,14 @@ function proximaPergunta(atual) {
     quizError(atual, 'Selecione uma opção para continuar.');
     return;
   }
+
+  enviarParaPlanilha({
+    tipo: 'resposta',
+    whatsapp: state.whatsapp,
+    pergunta: atual,
+    resposta: state.respostas[atual]
+  });
+
   if (atual === TOTAL) { avaliarResultado(); return; }
   showStep(atual + 1);
   setProgress(atual + 1);
@@ -115,19 +130,6 @@ function voltarPergunta(atual) {
 }
 
 function avaliarResultado() {
-  enviarParaPlanilha({
-    data: new Date().toLocaleString('pt-BR'),
-    nome: state.nome,
-    whatsapp: state.whatsapp,
-    clinica: state.clinica,
-    p1: state.respostas[1] || '',
-    p2: state.respostas[2] || '',
-    p3: state.respostas[3] || '',
-    p4: state.respostas[4] || '',
-    p5: state.respostas[5] || '',
-    p6: state.respostas[6] || '',
-    p7: state.respostas[7] || ''
-  });
   showStep('obrigado');
 }
 
