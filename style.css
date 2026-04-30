@@ -490,6 +490,28 @@ nav.scrolled {
   outline-offset: 3px;
 }
 
+.btn-whatsapp-quiz {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #25D366;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 0.875rem;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  padding: 0.9rem 1.5rem;
+  border-radius: var(--radius-sm);
+  min-height: 48px;
+  transition: background 200ms ease, transform 150ms ease;
+}
+.btn-whatsapp-quiz:hover {
+  background: #1ebe5d;
+  transform: translateY(-1px);
+}
+.btn-whatsapp-quiz:active { transform: scale(0.98); }
+
 /* ===== DIVIDER ===== */
 .divider {
   width: 48px;
