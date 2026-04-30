@@ -1,6 +1,16 @@
 const TOTAL = 7;
 const SHEET_URL = 'https://script.google.com/macros/s/AKfycbyrrMaEKgszpI2qssVXfg8wk1ZcB03O7trsFuJvvSFOROpxNGxYPB55R9w9KCqRTJXfHA/exec';
 
+const LABELS = {
+  1: { zero: 'Não trabalhamos com isso', ate20k: 'Até R$20k', '20k-100k': 'Entre R$20k e R$100k', '100k-500k': 'Entre R$100k e R$500k', acima500k: 'Acima de R$500k' },
+  2: { onco: 'Oncologia / Reumatologia / Hematologia / Imunologia', 'clinica-geral': 'Clínica Médica Geral ou Multiespecialidade', estetica: 'Estética ou Odontológica', outra: 'Outra' },
+  3: { ate10: 'Até 10', '10-30': 'Entre 10 e 30', '30-80': 'Entre 30 e 80', acima80: 'Acima de 80' },
+  4: { 'sim-otimizado': 'Sim, está tudo revisado e otimizado', 'sim-incerto': 'Fizemos uma revisão, mas não sei se está no melhor modelo', nunca: 'Nunca fizemos uma revisão formal', 'nao-sei': 'Não sei responder' },
+  5: { 'controle-total': 'Tenho controle total, sei exatamente onde cada real vai', 'visao-geral': 'Tenho uma visão geral, mas nunca fiz uma revisão profunda', 'sei-desperdicio': 'Sei que tem desperdício, mas não sei exatamente onde', 'nunca-olhei': 'Nunca parei para olhar isso com cuidado' },
+  6: { 'sim-varias': 'Sim, mais de uma vez', 'sim-uma': 'Sim, uma vez', medo: 'Não, mas tenho medo que isso aconteça', nao: 'Não, nunca contratei nada do tipo' },
+  7: { sim: 'Sim, quero entender como isso funciona', curioso: 'Tenho curiosidade, mas ainda sou cético', depende: 'Depende do que está envolvido', nao: 'Não, não é o momento agora' }
+};
+
 const state = { nome: '', whatsapp: '', clinica: '', respostas: {} };
 
 function enviarParaPlanilha(payload) {
@@ -111,7 +121,7 @@ function proximaPergunta(atual) {
     tipo: 'resposta',
     whatsapp: state.whatsapp,
     pergunta: atual,
-    resposta: state.respostas[atual]
+    resposta: LABELS[atual][state.respostas[atual]] || state.respostas[atual]
   });
 
   if (atual === TOTAL) { avaliarResultado(); return; }
