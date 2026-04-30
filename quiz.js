@@ -4,14 +4,10 @@ const SHEET_URL = 'https://script.google.com/macros/s/AKfycbyrrMaEKgszpI2qssVXfg
 const state = { nome: '', whatsapp: '', clinica: '', respostas: {} };
 
 function enviarParaPlanilha(payload) {
-  const params = new URLSearchParams();
-  Object.keys(payload).forEach(k => params.append(k, payload[k]));
-
   fetch(SHEET_URL, {
     method: 'POST',
-    mode: 'no-cors',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: params.toString()
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
   }).catch(() => {});
 }
 
@@ -83,6 +79,7 @@ function avancarIdentificacao() {
 
   enviarParaPlanilha({
     tipo: 'lead',
+    data: new Date().toLocaleString('pt-BR'),
     nome: state.nome,
     whatsapp: state.whatsapp,
     clinica: state.clinica
