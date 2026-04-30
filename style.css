@@ -1229,8 +1229,18 @@ nav.scrolled {
   font-size: 0.875rem;
   color: var(--color-text-muted);
   font-style: italic;
-  margin-bottom: var(--sp-6);
+  margin-bottom: var(--sp-4);
   display: block;
+}
+
+.quiz-step h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(1.1rem, 2.2vw, 1.35rem);
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--text-primary);
+  margin-bottom: var(--sp-6);
+  letter-spacing: -0.01em;
 }
 
 /* Identificação */

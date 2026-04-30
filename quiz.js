@@ -105,27 +105,7 @@ function voltarPergunta(atual) {
 }
 
 function avaliarResultado() {
-  if (state.respostas[7] === 'nao') showStep('negativo');
-  else showStep('captura');
-}
-
-/* ── submit captura ── */
-function submeterCaptura() {
-  const btn = document.getElementById('btn-captura');
-  btn.disabled = true;
-  btn.textContent = 'Enviando…';
-
-  const msg = encodeURIComponent(
-    `Olá! Acabei de responder o diagnóstico no site da Dinatto.\n\n` +
-    `*Nome:* ${state.nome}\n` +
-    `*Clínica:* ${state.clinica}\n` +
-    `*WhatsApp:* ${state.whatsapp}\n\n` +
-    `Gostaria de saber se minha clínica está no momento certo.`
-  );
-
-  window.open(`https://wa.me/5571982562830?text=${msg}`, '_blank');
-
-  setTimeout(() => { showStep('confirmacao'); }, 400);
+  showStep('obrigado');
 }
 
 /* ── carrossel drag + teclado ── */
