@@ -301,8 +301,8 @@ nav.scrolled {
   display: inline-flex;
   align-items: center;
   gap: var(--sp-2);
-  background: rgba(190,238,14,0.08);
-  border: 1px solid rgba(190,238,14,0.2);
+  background: rgba(237,237,237,0.06);
+  border: 1px solid rgba(237,237,237,0.18);
   border-radius: 999px;
   padding: 0.4rem var(--sp-4);
   font-family: 'Poppins', sans-serif;
@@ -310,7 +310,7 @@ nav.scrolled {
   font-size: 0.72rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--color-accent);
+  color: var(--text-primary);
   margin-bottom: var(--sp-6);
 }
 
@@ -318,7 +318,7 @@ nav.scrolled {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--color-accent);
+  background: var(--text-muted);
   display: block;
   animation: pulseDot 2s ease-in-out infinite;
 }
@@ -363,8 +363,8 @@ nav.scrolled {
 .btn-hero {
   display: inline-flex;
   align-items: center;
-  background: var(--lime);
-  color: var(--surface-0);
+  background: #2563EB;
+  color: #fff;
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
   font-size: 14px;
@@ -378,9 +378,9 @@ nav.scrolled {
   white-space: nowrap;
 }
 
-.btn-hero:hover { background: var(--lime-hover); }
+.btn-hero:hover { background: #1d4ed8; }
 .btn-hero:active { transform: scale(0.98); }
-.btn-hero:focus-visible { outline: 2px solid var(--lime); outline-offset: 3px; }
+.btn-hero:focus-visible { outline: 2px solid #2563EB; outline-offset: 3px; }
 
 /* Hero scroll indicator */
 .hero-scroll-indicator {
@@ -418,8 +418,8 @@ nav.scrolled {
   display: inline-flex;
   align-items: center;
   gap: var(--sp-3);
-  background: var(--color-accent);
-  color: var(--color-bg);
+  background: #2563EB;
+  color: #fff;
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
   font-size: 0.875rem;
@@ -432,20 +432,20 @@ nav.scrolled {
   cursor: pointer;
   min-height: 48px;
   touch-action: manipulation;
-  box-shadow: var(--shadow-accent);
+  box-shadow: 0 4px 20px rgba(37,99,235,0.35);
   transition:
     opacity var(--dur-fast) var(--ease-out),
     transform var(--dur-fast) var(--ease-out),
     box-shadow var(--dur-fast) var(--ease-out);
 }
 .btn-primary:hover {
-  background: var(--lime-hover);
+  background: #1d4ed8;
   transform: translateY(-2px);
-  box-shadow: 0 6px 28px rgba(190,238,14,0.4);
+  box-shadow: 0 6px 28px rgba(37,99,235,0.45);
 }
 .btn-primary:active { transform: scale(0.98); box-shadow: none; }
 .btn-primary:focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid #2563EB;
   outline-offset: 3px;
 }
 .btn-primary:disabled {
@@ -608,8 +608,8 @@ nav.scrolled {
 .matematica-texto p + p { margin-top: var(--sp-5); }
 
 .mat-destaque {
-  color: var(--lime);
-  font-weight: 500;
+  color: var(--text-primary);
+  font-weight: 600;
 }
 
 .matematica-destaque {
@@ -652,7 +652,7 @@ nav.scrolled {
 }
 
 .momento-kw {
-  color: var(--lime);
+  color: var(--text-primary);
   font-weight: 600;
 }
 
@@ -898,14 +898,14 @@ nav.scrolled {
 }
 
 .sol-kw {
-  color: var(--lime);
+  color: var(--text-primary);
   font-weight: 600;
 }
 
 .sol-sub {
   text-decoration: underline;
   text-underline-offset: 3px;
-  text-decoration-color: rgba(190, 238, 14, 0.5);
+  text-decoration-color: rgba(237, 237, 237, 0.35);
 }
 
 .solucoes-subtitulo {
@@ -1056,7 +1056,7 @@ nav.scrolled {
 
 .kw,
 .inimigo-body p .kw {
-  color: var(--lime);
+  color: var(--text-primary);
   font-weight: 600;
   text-decoration: none;
 }
@@ -1080,18 +1080,18 @@ nav.scrolled {
 .inimigo-cta {
   display: inline-flex;
   margin-top: 32px;
-  background: var(--lime);
-  color: var(--surface-0);
+  background: #2563EB;
+  color: #fff;
   font-weight: 700;
   font-size: 15px;
   padding: 16px 36px;
   border-radius: 4px;
   text-decoration: none;
   transition: background 200ms ease var(--ease-out);
-  box-shadow: none;
+  box-shadow: 0 4px 20px rgba(37,99,235,0.35);
 }
 
-.inimigo-cta:hover { background: var(--lime-hover); color: var(--surface-0); }
+.inimigo-cta:hover { background: #1d4ed8; color: #fff; }
 .inimigo-cta:active { transform: scale(0.97); }
 
 /* ===== SEM RISCO ===== */
@@ -1467,41 +1467,46 @@ footer {
   align-items: center;
   justify-content: space-between;
   gap: var(--sp-8);
-  flex-wrap: wrap;
+  padding-bottom: var(--sp-8);
+  border-bottom: 1px solid var(--border-subtle);
 }
 
-.footer-logo img { height: 40px; display: block; }
+.footer-logo img { height: 44px; width: auto; display: block; }
+
+.footer-contatos {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0;
+}
 
 .footer-contato {
   display: flex;
-  flex-direction: column;
-  gap: var(--sp-3);
-  align-items: flex-end;
-}
-
-.footer-contato a {
-  display: flex;
   align-items: center;
-  gap: var(--sp-2);
-  color: var(--color-text-secondary);
+  justify-content: flex-end;
+  gap: 10px;
+  color: var(--text-muted);
   text-decoration: none;
   font-family: 'Poppins', sans-serif;
   font-weight: 300;
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   min-height: 44px;
-  padding: var(--sp-1) 0;
+  padding: 4px 0;
   transition: color var(--dur-fast) var(--ease-out);
+  border-bottom: 1px solid var(--border-subtle);
+  width: 100%;
 }
-
-.footer-contato a:hover { color: var(--color-accent); }
-.footer-contato a:focus-visible {
+.footer-contato:last-child { border-bottom: none; }
+.footer-contato:hover { color: var(--lime); }
+.footer-contato:hover svg { opacity: 1; }
+.footer-contato svg { opacity: 0.5; transition: opacity var(--dur-fast) var(--ease-out); flex-shrink: 0; }
+.footer-contato:focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 3px;
   border-radius: var(--radius-sm);
 }
 
 .footer-bottom {
-  margin-top: var(--sp-8);
   padding-top: var(--sp-6);
   border-top: 1px solid var(--border-subtle);
   text-align: center;
@@ -1638,8 +1643,9 @@ footer {
 
   .semrisco-grid { grid-template-columns: 1fr; gap: var(--sp-10); }
 
-  .footer-inner { flex-direction: column; align-items: flex-start; }
-  .footer-contato { align-items: flex-start; }
+  .footer-inner { flex-direction: column; align-items: center; }
+  .footer-contatos { align-items: center; }
+  .footer-contato { align-items: center; justify-content: center; }
 
   .whatsapp-float { bottom: var(--sp-5); right: var(--sp-5); }
 
