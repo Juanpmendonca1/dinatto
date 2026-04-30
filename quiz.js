@@ -4,12 +4,30 @@ const SHEET_URL = 'https://script.google.com/macros/s/AKfycbyrrMaEKgszpI2qssVXfg
 const state = { nome: '', whatsapp: '', clinica: '', respostas: {} };
 
 function enviarParaPlanilha(payload) {
-  fetch(SHEET_URL, {
-    method: 'POST',
-    mode: 'no-cors',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload)
-  }).catch(() => {});
+  const form = document.createElement('form');
+  form.method = 'POST';
+  form.action = SHEET_URL;
+  form.target = 'sheet-iframe';
+  form.style.display = 'none';
+
+  const input = document.createElement('input');
+  input.type = 'hidden';
+  input.name = 'payload';
+  input.value = JSON.stringify(payload);
+  form.appendChild(input);
+
+  let iframe = document.getElementById('sheet-iframe');
+  if (!iframe) {
+    iframe = document.createElement('iframe');
+    iframe.name = 'sheet-iframe';
+    iframe.id = 'sheet-iframe';
+    iframe.style.display = 'none';
+    document.body.appendChild(iframe);
+  }
+
+  document.body.appendChild(form);
+  form.submit();
+  setTimeout(() => form.remove(), 1000);
 }
 
 /* ── helpers ── */
